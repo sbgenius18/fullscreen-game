@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fullscreen Launcher</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #ytFrame {
+      width: 1px;
+      height: 1px;
+      border: none;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fullscreen YouTube Demo</h1>
+  <button id="launchBtn">Launch YouTube Fullscreen</button>
+
+  <!-- YouTube iframe -->
+  <iframe id="ytFrame"
+          src="https://sbgenius18.github.io/minified-build/"
+          allowfullscreen>
+  </iframe>
+
+  <script>
+    const btn = document.getElementById("launchBtn");
+    const ytFrame = document.getElementById("ytFrame");
+
+    btn.addEventListener("click", async () => {
+      ytFrame.style.display = "block"; // make iframe visible
+      try {
+        // Request fullscreen on iframe
+        await ytFrame.requestFullscreen();
+        console.log("Entered fullscreen YouTube");
+      } catch (err) {
+        console.error("Fullscreen failed:", err);
+      }
+    });
+  </script>
+</body>
+</html>
